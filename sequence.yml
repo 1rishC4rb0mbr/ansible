@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  vars_prompt:
+  #prompt for first and last epoch day
+  - name: epoch_start
+    prompt: "What is the first epoch_day"
+    private: no
+  - name: epoch_end
+    prompt: "What is the last epoch_day"
+    private: no
+  tasks:
+  - name: sequencing epoch
+    file: 
+      path: "/data/{{ item }}"
+      state: directory
+      with_sequence: start={{ epoch_start }} end={{ epoch_end }}
+      register: item

@@ -1,0 +1,24 @@
+---
+
+- import_tasks: install-deian.yml
+  when: ansible_os_family == 'Debian'
+
+- import_tasks: install-redhat.yml
+  when: ansible_os_family == 'RedHat'
+
+- name: Create mount Directory
+  file:
+    path: "{{ nfs_mount_name }}"
+    state: directory
+    owner: "{{ nfs_mount_owned }}"
+    group: "{{ nfs_mount_group }}"
+    mode: 
+
+- name: Mount NFS Shares
+  mount:
+    src: "{{ nfs_mount_src }}"
+    name: "{{ nfs_mount_name }}"
+    fstype: nfs
+    state: mounted
+  loop:
+    - 

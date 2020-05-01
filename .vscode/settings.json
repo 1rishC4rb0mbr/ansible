@@ -1,0 +1,10 @@
+{
+    "ansible.fileCopyConfig": [
+        {
+            "server": "127.0.0.1",
+            "sourcePath": "c:\\Users\\BenFerguson\\OneDrive - Pratum\\Documents\\Github\\ansible/",
+            "targetPath": "ansible/",
+            "copyOnSave": true
+        }
+    ]
+}
